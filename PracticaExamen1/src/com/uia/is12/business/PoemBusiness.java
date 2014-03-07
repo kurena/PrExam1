@@ -9,6 +9,7 @@ package com.uia.is12.business;
 import com.uia.is12.data.PoemDAO;
 import com.uia.is12.domain.Poem;
 import com.uia.is12.domain.Verse;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -24,21 +25,11 @@ public class PoemBusiness {
         this.poemDAO = new PoemDAO();
     }
     
-    public Poem getPoem(){
+    public Poem getPoem() throws SQLException{
     
         return poemDAO.getPoem();
     }
     
-    //Pueden crear un metodo main para probar que todo este funcionando
-    public static void main(String args[]){
-        //NOTA: instancia de tipo PoemBusiness
-        PoemBusiness poemBusiness = new PoemBusiness();
-        ArrayList<Verse> verses= poemBusiness.getPoem().getVerse();
-        
-        for(Verse v: verses){
-            System.out.println(v.getParagraph());
-        }
-        
-    }
+    
     
 }

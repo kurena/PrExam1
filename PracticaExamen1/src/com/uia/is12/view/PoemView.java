@@ -8,6 +8,7 @@ package com.uia.is12.view;
 
 import com.uia.is12.business.PoemBusiness;
 import com.uia.is12.domain.Verse;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,14 +24,20 @@ public class PoemView extends Thread{
         this.poemBusiness = new PoemBusiness();
     }
     
-    public void run() {
+    public void run(){
             try {
-                ArrayList<Verse> verses= poemBusiness.getPoem().getVerse();
-                
+                ArrayList<Verse> verses;
+            try {
+                verses = poemBusiness.getPoem().getVerse();
                 for(Verse v: verses){
                     Thread.sleep(v.getReadingTime());
                     System.out.println(v.getParagraph());
                 }
+            } catch (SQLException ex) {
+                Logger.getLogger(PoemView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+                
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(PoemView.class.getName()).log(Level.SEVERE, null, ex);
