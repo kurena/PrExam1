@@ -28,9 +28,9 @@ public class PoemDAO {
     public void add(Poem poem) throws SQLException{
         mysqlDB = new MySQLDB();
         String sql = "insert into poem(id,name)"+
-                "values ("+poem.getId()+","+poem.getName()+")";
+                "values ("+poem.getId()+",'"+poem.getName()+"')";
         mysqlDB.execute(sql);
-        mysqlDB.close();
+        mysqlDB.closeExecute();
     }
     
     public boolean exists(Poem poem) throws SQLException{
@@ -42,7 +42,7 @@ public class PoemDAO {
         if(res.next()){
             exist = true;
         }
-        mysqlDB.close();
+        mysqlDB.closeExecuteQuery();
         return exist;
     }
     

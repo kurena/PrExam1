@@ -31,15 +31,18 @@ public class MySQLDB {
         return res;
         
     }
-    
-    public void close() throws SQLException{
-        cstmt.close();
-        con.close();
-        stmt.close();
-    }
     public void execute(String sql) throws SQLException{
         con = DriverManager.getConnection(DB_URL,USER,PASSWORD);
         stmt = con.prepareCall(sql);
         stmt.execute(sql, Statement.RETURN_GENERATED_KEYS);
     }
+    public void closeExecuteQuery() throws SQLException{
+        cstmt.close();
+        con.close();
+    }
+    public void closeExecute() throws SQLException{
+        stmt.close();
+        con.close();
+    }
+    
 }
