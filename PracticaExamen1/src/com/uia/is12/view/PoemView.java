@@ -25,23 +25,7 @@ public class PoemView extends Thread{
     }
     
     public void run(){
-            try {
-                ArrayList<Verse> verses;
-            try {
-                verses = poemBusiness.getPoem().getVerse();
-                for(Verse v: verses){
-                    Thread.sleep(v.getReadingTime());
-                    System.out.println(v.getParagraph());
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(PoemView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                
-                
-                
-            } catch (InterruptedException ex) {
-                Logger.getLogger(PoemView.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
             
          }
     

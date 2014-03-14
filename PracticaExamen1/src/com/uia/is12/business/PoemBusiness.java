@@ -24,12 +24,11 @@ public class PoemBusiness {
     
         this.poemDAO = new PoemDAO();
     }
-    
-    public Poem getPoem() throws SQLException{
-    
-        return poemDAO.getPoem();
+    public void add(Poem poem) throws SQLException, Exception{
+        if(!(poemDAO.exists(poem))){
+           poemDAO.add(poem); 
+        }else{
+            throw new Exception("El poema ya existe en la BD");
+        }
     }
-    
-    
-    
 }

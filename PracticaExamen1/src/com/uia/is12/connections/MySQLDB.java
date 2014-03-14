@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class MySQLDB {
     
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/semana8";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/progra2";
     
     static final String USER = "root";
     static final String PASSWORD = "root";
@@ -27,18 +27,19 @@ public class MySQLDB {
         con = DriverManager.getConnection(DB_URL,USER,PASSWORD);
         cstmt = con.prepareCall(sql);
         ResultSet res = cstmt.executeQuery();
-        cstmt.close();
-        con.close();
         
         return res;
         
     }
     
+    public void close() throws SQLException{
+        cstmt.close();
+        con.close();
+        stmt.close();
+    }
     public void execute(String sql) throws SQLException{
         con = DriverManager.getConnection(DB_URL,USER,PASSWORD);
         stmt = con.prepareCall(sql);
         stmt.execute(sql, Statement.RETURN_GENERATED_KEYS);
-        stmt.close();
-        con.close();
     }
 }

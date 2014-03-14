@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Vera
  */
 public class Poem {
-    
+    private int id;
     private String name;
     private ArrayList<Verse> verse;
 
@@ -50,6 +50,15 @@ public class Poem {
         this.verse = verse;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
    
     
     
