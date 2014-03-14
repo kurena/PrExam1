@@ -17,14 +17,7 @@ import java.util.ArrayList;
  */
 public class PoemDAO {
     
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/semana8";
     
-    static final String USER = "root";
-    static final String PASSWORD = "root";
-    
-    Connection con = null;
-    CallableStatement stmt = null;
     
     public PoemDAO(){
     
@@ -34,18 +27,7 @@ public class PoemDAO {
         Poem poem = new Poem();
         ArrayList<Verse> verses= new ArrayList();
         
-        con = DriverManager.getConnection(DB_URL,USER,PASSWORD);
-        String sql = "SELECT * FROM verse";
-        stmt = con.prepareCall(sql);
-        ResultSet res = stmt.executeQuery();
-        
-        while (res.next()){
-            System.out.println(res.getString("paragraph") + "\t" + res.getString("time"));
-        }
-        
-        stmt.close();
-        con.close();
-        
+       
         poem.setVerse(verses);
         return poem;
         
